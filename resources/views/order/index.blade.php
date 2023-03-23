@@ -66,7 +66,7 @@
 </div>
 <div class="container mt-5">
     <h3>Status History</h3>
-
+    @if(!$logstates -> isEmpty())
     <table class="table">
         <thead>
         <tr>
@@ -77,14 +77,19 @@
         </tr>
         </thead>
         <tbody>
-
-        <tr>
-            <th scope="row">3</th>
-            <td colspan="2">Larry the Bird</td>
-            <td>{{$order->comment}}</td>
-        </tr>
+        @foreach($logstates as $logstate)
+            <tr>
+                <th scope="row">{{date_format($logstate->created_at,"d/m/Y")}}</th>
+                <td>{{$logstate->from}}</td>
+                <td>{{$logstate->to}}</td>
+                <td>{{$logstate->comment}}</td>
+            </tr>
+        @endforeach
         </tbody>
     </table>
+    @else
+        <span>No history</span>
+    @endif
 </div>
 </body>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"

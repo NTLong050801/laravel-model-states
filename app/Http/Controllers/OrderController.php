@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Services\OrderService;
+use App\Models\Order;
 use Illuminate\Http\Request;
 
 class OrderController extends Controller
@@ -20,7 +21,8 @@ class OrderController extends Controller
     {
         //
         $order =  $this->orderService->show($id);
-        return view('order.index',compact('order'));
+        $logstates = $this->orderService->listLogStates($id);
+        return view('order.index',compact('order','logstates'));
     }
 
     /**

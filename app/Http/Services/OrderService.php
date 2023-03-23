@@ -16,17 +16,30 @@ class OrderService
 
     public function transition( $request)
     {
-        $order = Order::find($request->id);
-        //state hien tai
-        $status = $order-> state;
-        //state tiep theo
-        $tran =  $status -> transitionTo($request->state);
+      //  dd($request->state);
+       // dd($order->state);
+        //state tiep theo update
+            $order = Order::find($request->id);
+            //state hien tai arr
+            $status = $order-> state;
+            $comment = $request->input('comment');
+//            if($status == $request->state){
+//                dd("fail");
+//            }
+            $tran =  $status -> transitionTo($request->state);
+        //dd($tran->state);
         LogState::create([
+
             'order_id' => $request->id,
             'from' => $status,
-            'to' => $tran->state
+            'to' => $request->state,
+            'comment' => $comment,
+            'created_at' => now()
         ]);
+    }
 
-
+    public function listLogStates($id)
+    {
+         return  LogState::where("order_id",$id)->get();
     }
 }
