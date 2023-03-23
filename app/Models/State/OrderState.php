@@ -11,7 +11,7 @@ abstract class  OrderState extends State
 //    abstract public function declined(): string;
 //    abstract public function approved(): string;
 //    abstract public function processed(): string;
-    abstract public function color(): string;
+    abstract public function name(): string;
     public static function config():StateConfig
     {
         return parent::config()
@@ -21,5 +21,6 @@ abstract class  OrderState extends State
             ->allowTransition(Approved::class, Processed::class)
             ;
     }
+
 
 }

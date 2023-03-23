@@ -4,9 +4,10 @@ namespace App\Models\State;
 
 class Declined extends OrderState
 {
-
-    public function color(): string
+    public static $name = 'declined';
+    public function name(): string
     {
         // TODO: Implement color() method.
+        return  $this->name;
     }
 }

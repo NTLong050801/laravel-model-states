@@ -5,8 +5,10 @@ namespace App\Models\State;
 class Processed extends OrderState
 {
 
-    public function color(): string
+   public static $name = "processed";
+    public function name(): string
     {
-        // TODO: Implement color() method.
+      return  $this->name;
+        // TODO: Implement name() method.
     }
 }

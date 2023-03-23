@@ -4,10 +4,10 @@ namespace App\Models\State;
 
 class pending extends OrderState
 {
-
-    public function color(): string
+    public static $name = 'pending';
+    public function name(): string
     {
         // TODO: Implement color() method.
-        return  'red';
+        return  $this->name;
     }
 }

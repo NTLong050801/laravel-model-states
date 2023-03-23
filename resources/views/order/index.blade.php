@@ -12,30 +12,33 @@
 <body>
 <div class="container">
     <h3>Sales Order Information</h3>
-    <div class="mb-3 row">
-        <label for="staticEmail" class="col-sm-2 col-form-label">#number</label>
-        <span class="">1232</span>
-    </div>
 
-    <div class="mb-3 row">
-        <label for="staticEmail" class="col-sm-2 col-form-label">Customer</label>
-        <div class="col-sm-10">
-            <span class="">Long</span>
+        <div class="mb-3 row">
+            <label for="staticEmail" class="col-sm-2 col-form-label">#number</label>
+            <span class="">{{$order->id}}</span>
         </div>
-    </div>
-    <div class="mb-3 row">
-        <label for="staticEmail" class="col-sm-2 col-form-label">Total</label>
-        <div class="col-sm-10">
-            <span class="f">1232</span>
-        </div>
-    </div>
-    <div class="mb-3 row">
-        <label for="staticEmail" class="col-sm-2 col-form-label">Status</label>
-        <div class="col-sm-10">
-            <span class="bs-primary rounded-pill">pendding</span>
 
+        <div class="mb-3 row">
+            <label for="staticEmail" class="col-sm-2 col-form-label">Customer</label>
+            <div class="col-sm-10">
+                <span class="">{{$order->name}}</span>
+            </div>
         </div>
-    </div>
+        <div class="mb-3 row">
+            <label for="staticEmail" class="col-sm-2 col-form-label">Total</label>
+            <div class="col-sm-10">
+                <span class="f">{{$order->total}}</span>
+            </div>
+        </div>
+        <div class="mb-3 row">
+            <label for="staticEmail" class="col-sm-2 col-form-label">Status</label>
+            <div class="col-sm-10">
+                <span class="bs-primary rounded-pill">{{$order->state}}</span>
+
+            </div>
+        </div>
+
+
 
 </div>
 
