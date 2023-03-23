@@ -44,22 +44,23 @@
 
 <div class="container mt-5">
     <h3>Update Status</h3>
-    <form>
+    <form action="{{route('order.store',$order->id)}}" method="post">
+        @csrf
         <div class="mb-3">
             <label for="exampleInputEmail1" class="form-label">New Status</label>
-            <select class="form-select" aria-label="Default select example">
-                <option selected>Open this select menu</option>
-                <option value="1">One</option>
-                <option value="2">Two</option>
-                <option value="3">Three</option>
+            <select class="form-select" name="state" aria-label="Default select example">
+                <option value="pending" @if($order->state == 'pendding') selected @endif>Pending</option>
+                <option value="declined" @if($order->state == 'declined') selected @endif>Declined</option>
+                <option value="approved" @if($order->state == 'approved') selected @endif>Approved</option>
+                <option value="processed" @if($order->state == 'processed') selected @endif>Processed</option>
             </select>
 
         </div>
         <div class="mb-3">
             <label for="exampleInputPassword1" class="form-label">Comment</label>
-            <input type="password" class="form-control" id="exampleInputPassword1">
+            <input type="text" name="comment" class="form-control" id="exampleInputPassword1">
         </div>
-        <button type="reset" class="btn btn-primary">Reset</button>
+        <button type="button" class="btn btn-primary">Reset</button>
         <button type="submit" class="btn btn-primary">Save</button>
     </form>
 </div>
@@ -76,22 +77,11 @@
         </tr>
         </thead>
         <tbody>
-        <tr>
-            <th scope="row">1</th>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-        </tr>
-        <tr>
-            <th scope="row">2</th>
-            <td>Jacob</td>
-            <td>Thornton</td>
-            <td>@fat</td>
-        </tr>
+
         <tr>
             <th scope="row">3</th>
             <td colspan="2">Larry the Bird</td>
-            <td>@twitter</td>
+            <td>{{$order->comment}}</td>
         </tr>
         </tbody>
     </table>

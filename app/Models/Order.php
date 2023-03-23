@@ -10,27 +10,30 @@ use App\Models\State\Processed;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Spatie\ModelStates\HasStates;
-use App\States\Fulfillment\FulfillmentState;
+//use App\States\Fulfillment\FulfillmentState;
 class Order extends Model
 {
     use HasFactory,HasStates;
-    protected $casts = [
-        'state' => OrderState::class,
-        'fulfillment' => FulfillmentState::class,
+    protected $fillable = [
+            'state'
     ];
-    protected function registerStates(): void
-    {
-        $this
-            ->addState('pending', pending::class)
-            ->addState('Declined', Declined::class)
-            ->addState('Approved', Approved::class)
-        ->addState('Processed', Processed::class);
-    }
+    protected   $casts = [
+        'state' => OrderState::class,
+        //'fulfillment' => FulfillmentState::class,
+    ];
+//    protected function registerStates(): void
+//    {
+//        $this
+//            ->addState('pending', pending::class)
+//            ->addState('Declined', Declined::class)
+//            ->addState('Approved', Approved::class)
+//            ->addState('Processed', Processed::class);
+//    }
 
-    protected function defaultState(): string
-    {
-        return 'pending';
-    }
+//    protected function defaultState(): string
+//    {
+//        return 'pending';
+//    }
     public function start(): void
     {
         $this->transitionTo('in_progress');

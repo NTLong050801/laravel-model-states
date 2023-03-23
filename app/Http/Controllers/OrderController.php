@@ -36,7 +36,8 @@ class OrderController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->orderService->transition($request);
+       return redirect()->back();
     }
 
     /**
