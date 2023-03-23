@@ -2,6 +2,7 @@
 
 namespace App\Http\Services;
 
+use App\Models\LogState;
 use App\Models\Order;
 use Illuminate\Support\Facades\Session;
 
@@ -16,12 +17,16 @@ class OrderService
     public function transition( $request)
     {
         $order = Order::find($request->id);
+        //state hien tai
         $status = $order-> state;
+        //state tiep theo
         $tran =  $status -> transitionTo($request->state);
-        $order->update([
-            'state' => $tran->state,
-            'comment'=>$request->comment
+        LogState::create([
+            'order_id' => $request->id,
+            'from' => $status,
+            'to' => $tran->state
         ]);
+
 
     }
 }
