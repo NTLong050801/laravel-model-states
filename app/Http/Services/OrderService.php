@@ -4,6 +4,7 @@ namespace App\Http\Services;
 
 use App\Models\LogState;
 use App\Models\Order;
+use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\Session;
 
 class OrderService
@@ -41,5 +42,24 @@ class OrderService
     public function listLogStates($id)
     {
          return  LogState::where("order_id",$id)->get();
+    }
+
+    public function create( $request)
+    {
+       $order =  Order::create([
+            'name' => $request->name,
+            'total' => $request->total
+        ]);
+
+
+        LogState::create([
+
+            'order_id' => $order->id,
+            'from' => "N/A",
+            'to' => $order->state,
+            'comment' => "....",
+            'created_at' => now()
+        ]);
+
     }
 }

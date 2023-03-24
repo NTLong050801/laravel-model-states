@@ -19,10 +19,14 @@ class OrderController extends Controller
 
     public function index($id)
     {
-        //
+//        //
+//        $title = "List Order";
+//        return view('listOrder',compact('title'));
+        $title = "Detail Order";
         $order =  $this->orderService->show($id);
         $logstates = $this->orderService->listLogStates($id);
-        return view('order.index',compact('order','logstates'));
+        return view('order.index',compact('order','logstates','title'));
+
     }
 
     /**
@@ -31,6 +35,8 @@ class OrderController extends Controller
     public function create()
     {
         //
+        $title = "Create Order";
+        return view('create',compact('title'));
     }
 
     /**
@@ -48,6 +54,7 @@ class OrderController extends Controller
     public function show(string $id)
     {
         //
+
     }
 
     /**
@@ -64,6 +71,7 @@ class OrderController extends Controller
     public function update(Request $request, string $id)
     {
         //
+
     }
 
     /**
@@ -72,5 +80,10 @@ class OrderController extends Controller
     public function destroy(string $id)
     {
         //
+    }
+    public function createOrder(Request $request){
+
+        $this->orderService->create($request);
+//        dd($request);
     }
 }
