@@ -38,10 +38,8 @@ class OrderService
             'created_at' => now()
         ]);
         $data = "ID : ".$order->id." -- From state: ".$status." -- To state : ".$request->state;
-//        $file = fopen('../storage/app/history.text', 'w');
-//        fwrite($file, $data);
-//        fclose($file);
-        Log::info($data);
+
+//        Log::info($data);
 
     }
 

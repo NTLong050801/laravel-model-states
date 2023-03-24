@@ -20,6 +20,7 @@ abstract class  OrderState extends State
             ->allowTransition(Pending::class, Approved::class)
             ->allowTransition(Approved::class, Declined::class)
             ->allowTransition(Approved::class, Processed::class)
+            ->allowTransition(Processed::class, Pending::class)
             ;
     }
 
