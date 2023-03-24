@@ -22,5 +22,5 @@ Route::post('/create',[OrderController::class,'createOrder'])->name('create.post
 
 
 
-Route::get('/order/{id}',[OrderController::class,'index']);
+Route::get('/order/{id}',[OrderController::class,'index'])->name('order.detail');
 Route::post('/order/{id}',[OrderController::class,'store'])->name('order.store');

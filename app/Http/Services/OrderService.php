@@ -62,4 +62,9 @@ class OrderService
         ]);
 
     }
+
+    public function all()
+    {
+        return Order::all();
+    }
 }

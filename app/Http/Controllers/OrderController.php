@@ -84,6 +84,12 @@ class OrderController extends Controller
     public function createOrder(Request $request){
 
         $this->orderService->create($request);
+        return redirect()-> route('listOrder');
 //        dd($request);
+    }
+    public function listOrder(){
+        $title = "List Order";
+       $orders = $this->orderService->all();
+        return view('listOrder',compact('title','orders'));
     }
 }
